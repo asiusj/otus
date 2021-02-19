@@ -3,17 +3,17 @@ const jsdom = require("jsdom");
 const getPath = require("../getPath/getPath.js");
 const fs = require("fs").promises;
 const path = require("path");
-
 const pathToTemplate = path.resolve(__dirname, "../getPath/index.html");
+const template = await fs.readFile(pathToTemplate, {
+    encoding: "utf-8",
+});
+const resourceLoader = new jsdom.ResourceLoader({
+    userAgent:
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36",
+});
+
 describe("getPath", function () {
     before(async function () {
-        const template = await fs.readFile(pathToTemplate, {
-            encoding: "utf-8",
-        });
-        const resourceLoader = new jsdom.ResourceLoader({
-            userAgent:
-                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36",
-        });
         global = new jsdom.JSDOM(template, {
             resource: resourceLoader,
             runScripts: "outside-only",
