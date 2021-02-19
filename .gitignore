@@ -1,0 +1,9 @@
+node_modules/
+
+#my custom ignores
+1.js
+2.js
+3.js
+tests-lesson5
+5
+6
