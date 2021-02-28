@@ -7,3 +7,8 @@ node_modules/
 tests-lesson5
 5
 6
+tree/dist
+tree/src
+.babelrc
+.eslintrc*
+webpack.config*
